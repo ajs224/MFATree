@@ -477,12 +477,50 @@ int main(int argc, char *argv[])
 	  cout << "Tree size = " << tree.size() << endl;
 	  growTree(tree, height, mfaParticle);
 
+
+
+
+/*
+
+	  int size = 1024;
+	  int p = 10;
+
+	  cout << "p = " << p << endl;
+	  cout << "size = " << size << endl;
+
+	  int divMe = 8;
+	  size = divMe>>1; // This divides divMe by 2
+	  cout << "size = " << size << endl;
+	  size = size<<1; // This multiplies size by 2
+	  cout << "size = " << size << endl;
+	   
+	  cin.sync();
+	  cin.get();
+*/
+  
+	  /*
+	  size=1<<1; // size = 2 
+	  cout << "size = " << size << endl;
+	  size=1<<2; // size = 4
+	  cout << "size = " << size << endl;
+	  size=1<<3; // size = 8
+	  cout << "size = " << size << endl;
+	  
+	  size=1<<(p+1); // size = 2^(p+1)
+	  cout << "size = " << size << endl;
+	  */
+
+	  
+	  
+	  
+
+	  
 	  /*
 	  double phiSum = std::accumulate(mfaParticle.begin(),mfaParticle.end(),0.0,[](double s, const Particle & p){return s + phi(p.getMass());});
 	  cout << "phiSum  = " <<  phiSum  << endl;
 	  cout << "tree[0]  = " <<  tree[0]  << endl;
 	  */
-	  ofstream indicesDump("indices", ios::out);
+	  //ofstream indicesDump("indices", ios::out);
 	  
 	  
       // Initialise events array
@@ -632,7 +670,7 @@ int main(int argc, char *argv[])
 
 		if (d < 0)
 		  {
-			cout << "Coagulation event." << endl;
+			//cout << "Coagulation event." << endl;
 
 			// Coagulation occurs
 			// Choose a collision pair
@@ -687,37 +725,23 @@ int main(int argc, char *argv[])
 			d -= inRate;
 			if( d < 0)
 			  {
-				cout << "Inflow event." << endl;
 				// Particle inflow
+				//cout << "Inflow event." << endl;
 
 				// Implement this using our binary tree
 				particleIndex=uniformIntDist(generator);
-
-				//cout << "particleIndex" << particleIndex<< endl;
-				//cout << "old mfaParticle[particleIndex].getMass()" << mfaParticle[particleIndex].getMass()<< endl;
-				//cout << "phi(mfaParticle[particleIndex].getMass())" << phi(mfaParticle[particleIndex].getMass())<< endl;
-					
 				deltaMass = -phi(mfaParticle[particleIndex].getMass());
 				mfaParticle[particleIndex].setMass(mIn(1)); // m_in is delta(x-a), a=1 
 				deltaMass +=phi(mfaParticle[particleIndex].getMass());
-
+				
 				if(deltaMass > 0)
 				  {
 					//cout << "Mass changed - Updating tree" << endl;
 					// Update the tree
 					updateTree(tree, height, particleIndex, deltaMass);
-					//cin.sync();
-					//cin.get();
 				  }
 				
-					
-					//cout << "new mfaParticle[particleIndex].getMass()" << mfaParticle[particleIndex].getMass()<< endl;
-					//cout << "phi(mfaParticle[particleIndex].getMass())" << phi(mfaParticle[particleIndex].getMass())<< endl;
-
 				
-					//cout << "Inflow deltaMass = " << deltaMass << endl;
-
-			
 				//mfaParticle[particleIndex].setMass(mtrand()); // m_in~U[0,1]
 				//mfaParticle[particleIndex].setMass(mIn()); // m_in_delta_{i1}
 				//mfaParticle[particleIndex].setMass(1e0); // m_in is delta(x-a), a=1 
@@ -731,7 +755,7 @@ int main(int argc, char *argv[])
 			  {
 				// d -= other rates...
 				//if (d < 0) ...
-				cout << "Outflow event." << endl;
+				//cout << "Outflow event." << endl;
 
 				// Particle leaves the system
 				firstChosen=false;

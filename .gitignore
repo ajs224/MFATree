@@ -6,7 +6,6 @@ source/*~
 include/*~
 code.old/
 mfa-c++
-*.txt
 Debug/
 Release
 *.gz

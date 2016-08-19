@@ -1,0 +1,6 @@
+# Build with:
+
+mkdir Release
+cd Release
+cmake -DCMAKE_BUILD_TYPE=Release ../
+make -j 8 VERBOSE=1

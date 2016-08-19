@@ -5,12 +5,7 @@
 //-----------------------------------------------
 
 /*
-  This is hardcoded pure multiplicative coagulation
-  - First will be the basic algorithm to test things
-  - Next add binary tree for kernel
-  - Majorant kernel
-  - More general kernels
-  - In and outflow in tree structure
+  This is hardcoded pure multiplicative coagulation (for speed)
    */
 
 
